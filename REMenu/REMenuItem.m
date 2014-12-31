@@ -62,6 +62,19 @@
     return self;
 }
 
+//  Method Zyncro
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image action:(void (^)(REMenuItem *item))action
+{
+    self = [super init];
+    if (self) {
+        _title = title;
+        _image = image;
+        _action = action;
+        _textAlignment = 0;
+    }
+    return self;
+}
+
 - (id)initWithCustomView:(UIView *)customView action:(void (^)(REMenuItem *item))action
 {
     self = [super init];
