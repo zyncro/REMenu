@@ -59,16 +59,15 @@
         _separatorHeight = 2.0;
         _separatorOffset = CGSizeMake(0.0, 0.0);
         _waitUntilAnimationIsComplete = YES;
-        
-        _textOffset = CGSizeMake(0, 0);
+        _textOffset = CGSizeMake(50, 0);
         _subtitleTextOffset = CGSizeMake(0, 0);
-        _font = [UIFont boldSystemFontOfSize:21.0];
+        _font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
         _subtitleFont = [UIFont systemFontOfSize:14.0];
         
         _backgroundAlpha = 1.0;
-        _backgroundColor = [UIColor colorWithRed:53/255.0 green:53/255.0 blue:52/255.0 alpha:1.0];
+        _backgroundColor = [UIColor colorWithRed:11.0/255.0 green:28.0/255.0 blue:56.0/255.0 alpha:0.96];
         _separatorColor = [UIColor colorWithPatternImage:self.separatorImage];
-        _textColor = [UIColor colorWithRed:128/255.0 green:126/255.0 blue:124/255.0 alpha:1.0];
+        _textColor = [UIColor whiteColor];
         _textShadowColor = [UIColor blackColor];
         _textShadowOffset = CGSizeMake(0, -1.0);
         _textAlignment = NSTextAlignmentCenter;
@@ -240,10 +239,6 @@
     [self.containerView addSubview:self.menuWrapperView];
     [view addSubview:self.containerView];
     
-    if ([self.delegate respondsToSelector:@selector(willOpenMenu:)]) {
-        [self.delegate willOpenMenu:self];
-    }
-    
     // Animate appearance
     //
     if (self.bounce) {
@@ -261,9 +256,6 @@
                  self.menuWrapperView.frame = frame;
              } completion:^(BOOL finished) {
                  self.isAnimating = NO;
-                 if ([self.delegate respondsToSelector:@selector(didOpenMenu:)]) {
-                     [self.delegate didOpenMenu:self];
-                 }
              }];
         } else {
             [UIView animateWithDuration:self.animationDuration
@@ -276,9 +268,6 @@
                  self.menuWrapperView.frame = frame;
              } completion:^(BOOL finished) {
                  self.isAnimating = NO;
-                 if ([self.delegate respondsToSelector:@selector(didOpenMenu:)]) {
-                     [self.delegate didOpenMenu:self];
-                 }
              }];
 
         }
@@ -293,9 +282,6 @@
             self.menuWrapperView.frame = frame;
         } completion:^(BOOL finished) {
             self.isAnimating = NO;
-            if ([self.delegate respondsToSelector:@selector(didOpenMenu:)]) {
-                [self.delegate didOpenMenu:self];
-            }
         }];
     }
 }
@@ -354,18 +340,12 @@
             if (self.closeCompletionHandler) {
                 self.closeCompletionHandler();
             }
-            if ([self.delegate respondsToSelector:@selector(didCloseMenu:)]) {
-                [self.delegate didCloseMenu:self];
-            }
         }];
         
     };
     
     if (self.closePreparationBlock) {
         self.closePreparationBlock();
-    }
-    if ([self.delegate respondsToSelector:@selector(willCloseMenu:)]) {
-        [self.delegate willCloseMenu:self];
     }
     
     if (self.bounce) {
