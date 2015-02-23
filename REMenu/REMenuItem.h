@@ -52,6 +52,7 @@
 
 @property (copy, readwrite, nonatomic) NSString *title;
 @property (copy, readwrite, nonatomic) NSString *subtitle;
+@property (strong, readwrite, nonatomic) NSString *nameAccessibilityLabel;
 @property (copy, readwrite, nonatomic) NSString *badge;
 @property (strong, readwrite, nonatomic) UIImage *image;
 @property (strong, readwrite, nonatomic) UIImage *highlightedImage;
@@ -65,6 +66,6 @@
 - (id)initWithCustomView:(UIView *)customView;
 - (void)setNeedsLayout;
 
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image action:(void (^)(REMenuItem *item))action;
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image accessibilityLabel:(NSString *)accessibilityLabel action:(void (^)(REMenuItem *item))action;
 
 @end

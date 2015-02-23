@@ -144,7 +144,7 @@
     
     // Accessibility
     //
-    self.accessibilityLabel = self.item.title;
+    self.accessibilityLabel = self.item.nameAccessibilityLabel;
     if (self.subtitleLabel.text)
         self.accessibilityLabel = [NSString stringWithFormat:@"%@, %@", self.item.title, self.item.subtitle];
     

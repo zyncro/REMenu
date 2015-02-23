@@ -63,7 +63,7 @@
 }
 
 //  Method Zyncro
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image action:(void (^)(REMenuItem *item))action
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image accessibilityLabel:(NSString *)accessibilityLabel action:(void (^)(REMenuItem *item))action
 {
     self = [super init];
     if (self) {
@@ -71,6 +71,7 @@
         _image = image;
         _action = action;
         _textAlignment = 0;
+        _nameAccessibilityLabel = accessibilityLabel;
     }
     return self;
 }
