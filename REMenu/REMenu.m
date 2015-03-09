@@ -198,7 +198,9 @@
                                                                          index * self.itemHeight + index * self.separatorHeight + 40.0 + navigationBarOffset + self.separatorOffset.height,
                                                                          rect.size.width - self.separatorOffset.width,
                                                                          self.separatorHeight)];
-        separatorView.backgroundColor = self.separatorColor;
+        if (index != 0) {
+            separatorView.backgroundColor = self.separatorColor;
+        }
         separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self.menuView addSubview:separatorView];
         
